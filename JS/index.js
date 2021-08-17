@@ -1,22 +1,37 @@
-let label = document.querySelector('#checkbox');
+let toggleClass = 'Checkbox__fill--active';
+
+let checkbox = document.querySelector('#checkbox');
 let input = document.querySelector('#input');
 let checkboxInput = document.querySelector('#checkboxFill');
 let state = {
-  active: false,
-  class: 'Checkbox__fill--active',
+  input,
+  checkbox,
+  checkboxInput,
+  toggleClass,
+  status: this.input.checked,
   click() {
-    this.active = !this.active;
-    if (this.active) {
-      checkboxInput.classList.add(this.class);
-      input.checked = this.active;
-    } else {
-      checkboxInput.classList.remove(this.class);
-      input.checked = this.active;
-    }
+    this.status = !this.status;
+    if (this.status)
+      this.add();
+    else
+      this.remove();
+  },
+  add() {
+    this.checkboxInput.classList.add(this.toggleClass);
+    this.input.checked = this.status;
+  },
+  remove() {
+    this.checkboxInput.classList.remove(this.toggleClass);
+    this.input.checked = this.status;
+  },
+  handle() {
+    if (this.status)
+      this.add();
+    else
+      this.remove();
+
+    this.checkbox.onclick = this.click.bind(this);
   }
 }
 
-input.checked = state.active;
-label.addEventListener('click', () => {
-  state.click();
-});
+state.handle();
