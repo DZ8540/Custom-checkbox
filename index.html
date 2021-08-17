@@ -7,20 +7,37 @@
   <link rel="stylesheet" href="./CSS/styles.css">
   <title>DZ | Custom checkbox</title>
 </head>
-<body style="padding: 0; margin: 0; display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh;">
+<body style="padding: 0; margin: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100vh;">
 
   <!-- Checkbox -->
-  <div class="Checkbox" id="checkbox">
-    <input type="checkbox" class="Checkbox__input" id="input" checked>
+  <div class="Checkbox" id="checkbox" data-checked="true">
+    <input type="checkbox" class="Checkbox__input">
 
     <div class="Checkbox__checkbox">
-      <span class="Checkbox__fill" id="checkboxFill"></span>
+      <span class="Checkbox__fill" data-id="checkboxInput"></span>
     </div>
 
     <span class="Checkbox__text">Checkbox</span>
   </div>
   <!-- Checkbox -->
 
+  <!-- Separator -->
+  <div style="margin: 10px 0"></div>
+  <!-- Separator -->
+
+  <!-- Checkbox -->
+  <div class="Checkbox" id="checkbox2">
+    <input type="checkbox" class="Checkbox__input">
+
+    <div class="Checkbox__checkbox">
+      <span class="Checkbox__fill" data-id="checkboxInput"></span>
+    </div>
+
+    <span class="Checkbox__text">Checkbox</span>
+  </div>
+  <!-- Checkbox -->
+
+  <script src="./JS/Checkbox.js"></script>
   <script src="./JS/index.js"></script>
 </body>
 </html>
