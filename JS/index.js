@@ -1,5 +1,5 @@
-let checkbox = document.querySelector('#checkbox');
-new Checkbox(checkbox);
+let firstCheckbox = document.querySelector('#firstCheckbox');
+new Checkbox(firstCheckbox);
 
-let checkbox2 = document.querySelector('#checkbox2');
-new Checkbox(checkbox2);
+let lastCheckbox = document.querySelector('#lastCheckbox');
+new Checkbox(lastCheckbox);
