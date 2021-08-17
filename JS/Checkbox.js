@@ -5,7 +5,7 @@ class Checkbox {
     this.item = item;
     this.input = item.querySelector('input');
     this.checkbox = item.querySelector('[data-id="checkboxInput"]');
-    this.status = this.item.dataset.checked ?? false;
+    this.status = this.input.checked;
 
     this.handle();
   }
