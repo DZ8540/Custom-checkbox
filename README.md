@@ -10,7 +10,7 @@ In order to use, it is enough to find the element you need, and then pass it to 
 ## Example
 ```html
 <div class="Checkbox" id="firstCheckbox">
-  <input type="checkbox" class="Checkbox__input" checked>
+  <input type="checkbox" class="Checkbox__input">
 
   <div class="Checkbox__checkbox">
     <span class="Checkbox__fill" data-id="checkboxInput"></span>
