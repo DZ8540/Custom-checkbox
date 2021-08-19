@@ -3,8 +3,8 @@ class Checkbox {
 
   constructor(item) {
     this.item = item;
-    this.input = item.querySelector('input');
-    this.checkbox = item.querySelector('[data-id="checkboxInput"]');
+    this.input = item.querySelector('[data-id="dz-input"]');
+    this.checkbox = item.querySelector('[data-id="dz-checkboxInput"]');
     this.status = this.input.checked;
 
     this.handle();
