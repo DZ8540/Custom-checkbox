@@ -8,16 +8,22 @@ In order to use, it is enough to find the element you need, and then pass it to 
 3. Input maintains checked attribute.
 
 ## Example
+### HTML
 ```html
 <div class="Checkbox" id="firstCheckbox">
-  <input type="checkbox" class="Checkbox__input">
+  <input type="checkbox" class="Checkbox__input" data-id="dz-input">
 
   <div class="Checkbox__checkbox">
-    <span class="Checkbox__fill" data-id="checkboxInput"></span>
+    <span class="Checkbox__fill" data-id="dz-checkboxInput"></span>
   </div>
 
   <span class="Checkbox__text">Checkbox</span>
 </div>
+```
+### JS
+```js
+let el = document.querySelector(el);
+new Checkbox(el);
 ```
 
 ## End
