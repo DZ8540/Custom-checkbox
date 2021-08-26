@@ -89,7 +89,7 @@ class Checkbox implements ICheckbox {
     return '(undefined name) checkbox';
   }
 
-  checkForUser() {
+  checkForUser(): void {
     if (this.item && this.input && this.checkbox)
       console.info(`The ${this.name} component is ready!`);
     else 
