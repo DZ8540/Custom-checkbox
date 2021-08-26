@@ -1,5 +1,11 @@
-let firstCheckbox = document.querySelector('#firstCheckbox');
-new Checkbox(firstCheckbox);
-
-let lastCheckbox = document.querySelector('#lastCheckbox');
-new Checkbox(lastCheckbox);
+"use strict";
+var firstCheckbox = document.querySelector('#firstCheckbox');
+if (firstCheckbox)
+    new Checkbox(firstCheckbox);
+else
+    console.warn('Checkbox is not found!');
+var lastCheckbox = document.querySelector('#lastCheckbox');
+if (lastCheckbox)
+    new Checkbox(lastCheckbox);
+else
+    console.warn('Checkbox is not found!');
