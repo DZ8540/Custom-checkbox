@@ -6,6 +6,7 @@ In order to use, it is enough to find the element you need, and then pass it to 
 1. Text value print in last span in the component.
 2. No id attribute required for input.
 3. Input maintains checked attribute.
+4. If id attribute in the component isn't null, in console you can see what the component has name.
 
 ## Example
 ### HTML
