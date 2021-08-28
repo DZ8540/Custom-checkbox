@@ -10,8 +10,8 @@ interface ICheckbox {
   check(): void,
   add(): void,
   remove(): void,
-  checkForUser(): void,
-  setName(): string
+  checkForUser(): boolean,
+  setName(): string,
 }
 
 class Checkbox implements ICheckbox {
@@ -28,22 +28,15 @@ class Checkbox implements ICheckbox {
     this.checkbox = item.querySelector('[data-id="dz-checkboxInput"]');
     this.name = this.setName();
 
-    if (this.input) {
-      this.status = this.input.checked;
-      this.handle();
-    } else {
-      console.warn(`Input in ${this.name} component is not found!`);
-    }
+    this.handle();
   }
 
   handle(): void {
-    this.checkForUser();
-    this.check();
-
-    if (this.item)
-      this.item.onclick = this.click.bind(this);
-    else
-      console.warn(`The element that you passed into ${this.name} component, was not found!`);
+    if (this.checkForUser()) {
+      this.status = this.input!.checked;
+      this.check();
+      this.item!.onclick = this.click.bind(this);
+    }
   }
 
   click(): void {
@@ -52,34 +45,17 @@ class Checkbox implements ICheckbox {
   }
 
   check(): void {
-    if (this.status)
-      this.add();
-    else
-      this.remove();
+    this.status ? this.add() : this.remove();
   }
 
   add(): void {
-    if (this.checkbox)
-      this.checkbox.classList.add(this.toggleClass);
-    else
-      console.warn(`Fill element in ${this.name} component is not found!`);
-
-    if (this.input)
-      this.input.checked = this.status;
-    else
-      console.warn(`Input in ${this.name} component is not found!`);
+    this.checkbox!.classList.add(this.toggleClass);
+    this.input!.checked = this.status;
   }
 
   remove(): void {
-    if (this.checkbox)
-      this.checkbox.classList.remove(this.toggleClass);
-    else
-      console.warn(`Fill element in ${this.name} component is not found!`);
-
-    if (this.input)
-      this.input.checked = this.status;
-    else
-      console.warn(`Input in ${this.name} component is not found!`);
+    this.checkbox!.classList.remove(this.toggleClass);
+    this.input!.checked = this.status;
   }
 
   setName(): string {
@@ -89,10 +65,27 @@ class Checkbox implements ICheckbox {
     return '(undefined name) checkbox';
   }
 
-  checkForUser(): void {
-    if (this.item && this.input && this.checkbox)
-      console.info(`The ${this.name} component is ready!`);
-    else 
+  checkForUser(): boolean {
+    if (!this.item && !this.input && !this.checkbox) {
       console.warn(`The ${this.name} component is not ready!`);
+    } 
+
+    if (!this.item) {
+      console.warn(`The element that you passed into ${this.name} component, was not found!`);
+      return false;
+    }
+
+    if (!this.input) {
+      console.warn(`Input in ${this.name} component is not found!`);
+      return false;
+    }
+
+    if (!this.checkbox) {
+      console.warn(`Fill element in ${this.name} component is not found!`);
+      return false;
+    }
+    
+    console.info(`The ${this.name} component is ready!`);
+    return true;
   }
 }
