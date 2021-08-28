@@ -1,5 +1,5 @@
 interface ICheckbox {
-  toggleClass: string,
+  readonly toggleClass: string,
   item: HTMLDivElement | null,
   input: HTMLInputElement | null,
   checkbox: HTMLSpanElement | null,
