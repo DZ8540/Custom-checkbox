@@ -11,7 +11,6 @@ interface ICheckbox {
   add(): void,
   remove(): void,
   checkForUser(): boolean,
-  setName(): string,
 }
 
 class Checkbox implements ICheckbox {
@@ -26,7 +25,7 @@ class Checkbox implements ICheckbox {
     this.item = item;
     this.input = item.querySelector('[data-id="dz-input"]');
     this.checkbox = item.querySelector('[data-id="dz-checkboxInput"]');
-    this.name = this.setName();
+    this.name = `${this.item.dataset.name || '(undefined name)'} checkbox component`;
 
     this.handle();
   }
@@ -58,34 +57,27 @@ class Checkbox implements ICheckbox {
     this.input!.checked = this.status;
   }
 
-  setName(): string {
-    if (this.item && this.item.id)
-      return `${this.item.id} checkbox`;
-
-    return '(undefined name) checkbox';
-  }
-
   checkForUser(): boolean {
     if (!this.item && !this.input && !this.checkbox) {
-      console.warn(`The ${this.name} component is not ready!`);
+      console.warn(`The ${this.name} is not ready!`);
     } 
 
     if (!this.item) {
-      console.warn(`The element that you passed into ${this.name} component, was not found!`);
+      console.warn(`The element that you passed into ${this.name}, was not found!`);
       return false;
     }
 
     if (!this.input) {
-      console.warn(`Input in ${this.name} component is not found!`);
+      console.warn(`Input in ${this.name} is not found!`);
       return false;
     }
 
     if (!this.checkbox) {
-      console.warn(`Fill element in ${this.name} component is not found!`);
+      console.warn(`Fill element in ${this.name} is not found!`);
       return false;
     }
     
-    console.info(`The ${this.name} component is ready!`);
+    console.info(`The ${this.name} is ready!`);
     return true;
   }
 }

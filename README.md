@@ -7,11 +7,12 @@ In order to use, it is enough to find the element you need, and then pass it to 
 2. No id attribute required for input.
 3. Input maintains checked attribute.
 4. If id attribute in the component isn't null, in console you can see what the component has name.
+5. Component maintains data-name attribute, to you can set component name.
 
 ## Example
 ### HTML
 ```html
-<div class="Checkbox" id="firstCheckbox">
+<div class="Checkbox" data-name="First Checkbox">
   <input type="checkbox" class="Checkbox__input" data-id="dz-input">
 
   <div class="Checkbox__checkbox">
