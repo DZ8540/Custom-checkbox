@@ -4,7 +4,7 @@ interface ICheckbox {
   input: HTMLInputElement | null,
   checkbox: HTMLSpanElement | null,
   status: boolean,
-  name: string,
+  readonly name: string,
   handle(): void,
   click(): void,
   check(): void,
@@ -19,7 +19,7 @@ class Checkbox implements ICheckbox {
   input: HTMLInputElement | null;
   checkbox: HTMLSpanElement | null;
   status: boolean = false;
-  name: string;
+  readonly name: string;
 
   constructor(item: HTMLDivElement) {
     this.item = item;
