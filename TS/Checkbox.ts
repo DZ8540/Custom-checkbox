@@ -1,25 +1,24 @@
 interface ICheckbox {
+  readonly name: string,
   readonly toggleClass: string,
+  readonly disabledClass: string,
   item: HTMLDivElement | null,
   input: HTMLInputElement | null,
   checkbox: HTMLSpanElement | null,
-  status: boolean,
-  readonly name: string,
   handle(): void,
-  click(): void,
   check(): void,
   add(): void,
   remove(): void,
-  checkForUser(): boolean,
+  checkForUser(): void,
 }
 
 class Checkbox implements ICheckbox {
-  toggleClass: string = 'Checkbox__fill--active';
+  readonly name: string;
+  readonly toggleClass: string = 'Checkbox__fill--active';
+  readonly disabledClass: string = 'Checkbox--disabled';
   item: HTMLDivElement | null;
   input: HTMLInputElement | null;
   checkbox: HTMLSpanElement | null;
-  status: boolean = false;
-  readonly name: string;
 
   constructor(item: HTMLDivElement) {
     this.item = item;
@@ -31,53 +30,48 @@ class Checkbox implements ICheckbox {
   }
 
   handle(): void {
-    if (this.checkForUser()) {
-      this.status = this.input!.checked;
+    try {
+      this.checkForUser();
+
       this.check();
-      this.item!.onclick = this.click.bind(this);
+      this.input!.onchange = this.check.bind(this);
+    } catch (err: any | Error) {
+      console.warn(err.message);
     }
   }
 
-  click(): void {
-    this.status = !this.status;
-    this.check();
-  }
-
   check(): void {
-    this.status ? this.add() : this.remove();
+    this.input!.checked ? this.add() : this.remove();
+    
+    if (this.input!.disabled)
+      this.item!.classList.add(this.disabledClass);
   }
 
   add(): void {
     this.checkbox!.classList.add(this.toggleClass);
-    this.input!.checked = this.status;
   }
 
   remove(): void {
     this.checkbox!.classList.remove(this.toggleClass);
-    this.input!.checked = this.status;
   }
 
-  checkForUser(): boolean {
+  checkForUser(): void {
     if (!this.item && !this.input && !this.checkbox) {
-      console.warn(`The ${this.name} is not ready!`);
+      throw new Error(`The ${this.name} is not ready!`);
     } 
 
     if (!this.item) {
-      console.warn(`The element that you passed into ${this.name}, was not found!`);
-      return false;
+      throw new Error(`The element that you passed into ${this.name}, was not found!`);
     }
 
     if (!this.input) {
-      console.warn(`Input in ${this.name} is not found!`);
-      return false;
+      throw new Error(`Input in ${this.name} is not found!`);
     }
 
     if (!this.checkbox) {
-      console.warn(`Fill element in ${this.name} is not found!`);
-      return false;
+      throw new Error(`Fill element in ${this.name} is not found!`);
     }
     
     console.info(`The ${this.name} is ready!`);
-    return true;
   }
 }

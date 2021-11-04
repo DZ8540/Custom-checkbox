@@ -2,7 +2,7 @@
 var Checkbox = /** @class */ (function () {
     function Checkbox(item) {
         this.toggleClass = 'Checkbox__fill--active';
-        this.status = false;
+        this.disabledClass = 'Checkbox--disabled';
         this.item = item;
         this.input = item.querySelector('[data-id="dz-input"]');
         this.checkbox = item.querySelector('[data-id="dz-checkboxInput"]');
@@ -10,45 +10,40 @@ var Checkbox = /** @class */ (function () {
         this.handle();
     }
     Checkbox.prototype.handle = function () {
-        if (this.checkForUser()) {
-            this.status = this.input.checked;
+        try {
+            this.checkForUser();
             this.check();
-            this.item.onclick = this.click.bind(this);
+            this.input.onchange = this.check.bind(this);
+        }
+        catch (err) {
+            console.warn(err.message);
         }
     };
-    Checkbox.prototype.click = function () {
-        this.status = !this.status;
-        this.check();
-    };
     Checkbox.prototype.check = function () {
-        this.status ? this.add() : this.remove();
+        this.input.checked ? this.add() : this.remove();
+        if (this.input.disabled)
+            this.item.classList.add(this.disabledClass);
     };
     Checkbox.prototype.add = function () {
         this.checkbox.classList.add(this.toggleClass);
-        this.input.checked = this.status;
     };
     Checkbox.prototype.remove = function () {
         this.checkbox.classList.remove(this.toggleClass);
-        this.input.checked = this.status;
     };
     Checkbox.prototype.checkForUser = function () {
         if (!this.item && !this.input && !this.checkbox) {
-            console.warn("The " + this.name + " is not ready!");
+            throw new Error("The " + this.name + " is not ready!");
         }
         if (!this.item) {
-            console.warn("The element that you passed into " + this.name + ", was not found!");
-            return false;
+            throw new Error("The element that you passed into " + this.name + ", was not found!");
         }
         if (!this.input) {
-            console.warn("Input in " + this.name + " is not found!");
-            return false;
+            throw new Error("Input in " + this.name + " is not found!");
         }
         if (!this.checkbox) {
-            console.warn("Fill element in " + this.name + " is not found!");
-            return false;
+            throw new Error("Fill element in " + this.name + " is not found!");
         }
         console.info("The " + this.name + " is ready!");
-        return true;
     };
     return Checkbox;
 }());

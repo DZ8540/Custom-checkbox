@@ -48,4 +48,8 @@
   font-size: 20px;
   font-family: sans-serif;
 }
+
+.Checkbox--disabled {
+  opacity: .4;
+}
 /*# sourceMappingURL=checkbox.css.map */
