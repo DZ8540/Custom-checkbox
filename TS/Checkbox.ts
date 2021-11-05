@@ -3,9 +3,9 @@ class Checkbox {
   public readonly toggleClass: string = 'Checkbox__fill--active';
   public readonly disabledClass: string = 'Checkbox--disabled';
 
-  private _item: HTMLDivElement | null;
-  private _input: HTMLInputElement | null;
-  private _checkbox: HTMLSpanElement | null;
+  protected _item: HTMLDivElement | null;
+  protected _input: HTMLInputElement | null;
+  protected _checkbox: HTMLSpanElement | null;
 
   constructor(item: HTMLDivElement) {
     this._item = item;
