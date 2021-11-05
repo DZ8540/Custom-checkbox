@@ -9,17 +9,33 @@ var Checkbox = /** @class */ (function () {
         this.name = (this._item.dataset.name || '(undefined name)') + " checkbox component";
         this._handle();
     }
+    /**
+     * Programmatically set checked attribute for input element
+     * @param {boolean} val
+     */
     Checkbox.prototype.checked = function (val) {
         this._input.checked = val;
         this._eventDispatch('change');
     };
+    /**
+     * Programmatically set disabled attribute for input element
+     * @param {boolean} val
+     */
     Checkbox.prototype.disabled = function (val) {
         this._input.disabled = val;
         this._eventDispatch('change');
     };
+    /**
+     * Event subscribe for input element into component
+     * @param {string} eventName - any event name for input element
+     * @param {Function} callback - your callback
+     */
+    Checkbox.prototype.on = function (eventName, callback) {
+        this._input.addEventListener(eventName, callback);
+    };
     Checkbox.prototype._handle = function () {
         try {
-            this._checkForUser();
+            this._checkForUsers();
             this._check();
             this._input.onchange = this._check.bind(this);
         }
@@ -44,7 +60,7 @@ var Checkbox = /** @class */ (function () {
         var event = new Event(eventName);
         this._input.dispatchEvent(event);
     };
-    Checkbox.prototype._checkForUser = function () {
+    Checkbox.prototype._checkForUsers = function () {
         if (!this._item && !this._input && !this._checkbox) {
             throw new Error("The " + this.name + " is not ready!");
         }

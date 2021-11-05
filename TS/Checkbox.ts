@@ -7,12 +7,13 @@ interface ICheckbox {
   _checkbox: HTMLSpanElement | null,
   checked(val: boolean): void,
   disabled(val: boolean): void,
+  on(eventName: keyof HTMLElementEventMap, callback: EventListenerOrEventListenerObject): void,
   _handle(): void,
   _check(): void,
   _add(): void,
   _remove(): void,
-  _checkForUser(): void,
-  _eventDispatch(eventName: Event['type']): void
+  _checkForUsers(): void,
+  _eventDispatch(eventName: keyof HTMLElementEventMap): void
 }
 
 class Checkbox implements ICheckbox {
@@ -32,21 +33,38 @@ class Checkbox implements ICheckbox {
     this._handle();
   }
 
+  /**
+   * Programmatically set checked attribute for input element
+   * @param {boolean} val 
+   */
   checked(val: boolean): void {
     this._input!.checked = val;
 
     this._eventDispatch('change');
   }
   
+  /**
+   * Programmatically set disabled attribute for input element
+   * @param {boolean} val 
+   */
   disabled(val: boolean): void {
     this._input!.disabled = val;
 
     this._eventDispatch('change');
   }
 
+  /**
+   * Event subscribe for input element into component
+   * @param {string} eventName - any event name for input element
+   * @param {Function} callback - your callback
+   */
+  on(eventName: keyof HTMLElementEventMap, callback: EventListenerOrEventListenerObject): void {
+    this._input!.addEventListener(eventName, callback);
+  }
+
   _handle(): void {
     try {
-      this._checkForUser();
+      this._checkForUsers();
 
       this._check();
       this._input!.onchange = this._check.bind(this);
@@ -72,12 +90,12 @@ class Checkbox implements ICheckbox {
     this._checkbox!.classList.remove(this.toggleClass);
   }
 
-  _eventDispatch(eventName: Event['type']): void {
+  _eventDispatch(eventName: keyof HTMLElementEventMap): void {
     let event: Event = new Event(eventName);
     this._input!.dispatchEvent(event);
   }
 
-  _checkForUser(): void {
+  _checkForUsers(): void {
     if (!this._item && !this._input && !this._checkbox) {
       throw new Error(`The ${this.name} is not ready!`);
     } 
