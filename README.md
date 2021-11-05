@@ -8,6 +8,7 @@ In order to use, it is enough to find the element you need, and then pass it to 
 3. Input maintains checked attribute and instance method.
 4. Input maintains disabled attribute and instance method.
 5. Component maintains data-name attribute, to you can set component name.
+6. Component maintains event subscribes with instance's 'on' method.
 
 ## Example
 ### HTML
