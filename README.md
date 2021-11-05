@@ -5,8 +5,8 @@ In order to use, it is enough to find the element you need, and then pass it to 
 ## Instruction:
 1. Text value print in last span in the component.
 2. No id attribute required for input.
-3. Input maintains checked attribute.
-4. Input maintains disabled attribute.
+3. Input maintains checked attribute and instance method.
+4. Input maintains disabled attribute and instance method.
 5. Component maintains data-name attribute, to you can set component name.
 
 ## Example
