@@ -13,7 +13,7 @@ In order to use, it is enough to find the element you need, and then pass it to 
 ## Example
 ### HTML
 ```html
-<div class="Checkbox" data-name="First Checkbox">
+<label class="Checkbox" id="firstCheckbox" data-name="First Checkbox">
   <input type="checkbox" class="Checkbox__input" data-id="dz-input">
 
   <div class="Checkbox__checkbox">
@@ -21,7 +21,7 @@ In order to use, it is enough to find the element you need, and then pass it to 
   </div>
 
   <span class="Checkbox__text">Checkbox</span>
-</div>
+</label>
 ```
 ### JS
 ```js
