@@ -22,7 +22,7 @@ class Checkbox {
    * Programmatically set checked 
    * or disabled attribute for input element
    * @param {string} type - must be checked or disabled
-   * @param {boolean} val 
+   * @param {boolean} val - default true
    */
   public action(type: Actions, val: boolean = true): void {
     this._input![type] = val;

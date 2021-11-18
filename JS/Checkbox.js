@@ -10,19 +10,14 @@ var Checkbox = /** @class */ (function () {
         this._handle();
     }
     /**
-     * Programmatically set checked attribute for input element
+     * Programmatically set checked
+     * or disabled attribute for input element
+     * @param {string} type - must be checked or disabled
      * @param {boolean} val
      */
-    Checkbox.prototype.checked = function (val) {
-        this._input.checked = val;
-        this._eventDispatch('change');
-    };
-    /**
-     * Programmatically set disabled attribute for input element
-     * @param {boolean} val
-     */
-    Checkbox.prototype.disabled = function (val) {
-        this._input.disabled = val;
+    Checkbox.prototype.action = function (type, val) {
+        if (val === void 0) { val = true; }
+        this._input[type] = val;
         this._eventDispatch('change');
     };
     /**

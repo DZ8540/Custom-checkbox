@@ -5,10 +5,10 @@ In order to use, it is enough to find the element you need, and then pass it to 
 ## Instruction:
 1. Text value print in last span in the component.
 2. No id attribute required for input.
-3. Input maintains checked attribute and instance method.
-4. Input maintains disabled attribute and instance method.
+3. Input maintains checked attribute.
+4. Input maintains disabled attribute.
 5. Component maintains data-name attribute, to you can set component name.
-6. Component maintains event subscribes with instance's 'on' method.
+6. There are methods.
 
 ## Example
 ### HTML
@@ -28,6 +28,16 @@ In order to use, it is enough to find the element you need, and then pass it to 
 let el = document.querySelector(el);
 new Checkbox(el);
 ```
+
+## Methods
+* action - programmatically set checked or disabled attribute for input element.
+  ```js
+  new Checkbox(el).action('checked');
+  ```
+* on - event subscribe for input element into component
+  ```js
+  new Checkbox(el).on(eventName, your callBack);
+  ```
 
 ## End
 That's all! Enjoy this (〜￣▽￣)〜
