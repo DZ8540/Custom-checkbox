@@ -1,6 +1,6 @@
 {
   "name": "@dz8540/custom-checkbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DZ's custom checkbox library",
   "main": "/Dist/JS/CustomCheckbox.min.js",
   "types": "customCheckbox.d.ts",
