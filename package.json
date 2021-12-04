@@ -1,14 +1,25 @@
 {
   "name": "@dz8540/custom-checkbox",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "description": "DZ's custom checkbox library",
+  "main": "/Dist/JS/CustomCheckbox.min.js",
+  "types": "customCheckbox.d.ts",
   "devDependencies": {
-    "typescript": "^4.3.5"
+    "typescript": "^4.5.2",
+    "sass": "^1.44.0"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DZ8540/Custom-checkbox.git"
+  },
+  "author": "DZ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DZ8540/Custom-checkbox/issues"
+  },
+  "homepage": "https://github.com/DZ8540/Custom-checkbox#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

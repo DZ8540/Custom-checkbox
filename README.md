@@ -1,14 +1,16 @@
 # DZ Custom-checkbox
-
 In order to use, it is enough to find the element you need, and then pass it to the class.
 
-## Instruction:
-1. Text value print in last span in the component.
-2. No id attribute required for input.
-3. Input maintains checked attribute.
-4. Input maintains disabled attribute.
-5. Component maintains data-name attribute, to you can set component name.
-6. There are methods.
+## Installation
+1. Via npm
+```cmd
+npm i @dz8540/customCheckbox
+```
+2. Manually - all you need is in the "Dist" folder.
+```html
+<link href="/Your-path/customCheckbox.min.css" rel="stylesheet">
+<script src="/Your-path/CustomCheckbox.min.js"></script>
+```
 
 ## Example
 ### HTML
@@ -28,6 +30,14 @@ In order to use, it is enough to find the element you need, and then pass it to 
 let el = document.querySelector(el);
 new Checkbox(el);
 ```
+
+## Instruction:
+1. Text value print in last span in the component.
+2. No id attribute required for input.
+3. Input maintains checked attribute.
+4. Input maintains disabled attribute.
+5. Component maintains data-name attribute, to you can set component name.
+6. There are methods.
 
 ## Methods
 * action - programmatically set checked or disabled attribute for input element.

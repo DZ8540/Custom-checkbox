@@ -1,6 +1,6 @@
 type Actions = 'checked' | 'disabled';
 
-class Checkbox {
+export class Checkbox {
   public readonly name: string;
   public readonly toggleClass: string = 'Checkbox__fill--active';
   public readonly disabledClass: string = 'Checkbox--disabled';
@@ -92,3 +92,5 @@ class Checkbox {
     console.info(`The ${this.name} is ready!`);
   }
 }
+
+export default Checkbox;
