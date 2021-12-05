@@ -4,7 +4,7 @@ In order to use, it is enough to find the element you need, and then pass it to 
 ## Installation
 1. Via npm
 ```cmd
-npm i @dz8540/customCheckbox
+npm i @dz8540/custom-checkbox
 ```
 2. Manually - all you need is in the "Dist" folder.
 ```html
