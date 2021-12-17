@@ -1,6 +1,6 @@
 {
   "name": "@dz8540/custom-checkbox",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "DZ's custom checkbox library",
   "main": "/Dist/JS/CustomCheckbox.min.js",
   "types": "customCheckbox.d.ts",
@@ -18,8 +18,5 @@
   "bugs": {
     "url": "https://github.com/DZ8540/Custom-checkbox/issues"
   },
-  "homepage": "https://github.com/DZ8540/Custom-checkbox#readme",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  }
+  "homepage": "https://github.com/DZ8540/Custom-checkbox#readme"
 }
